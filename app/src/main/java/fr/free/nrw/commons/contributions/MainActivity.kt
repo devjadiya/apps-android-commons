@@ -525,8 +525,11 @@ after opening the app.
 
     override fun onDestroy() {
         quizChecker!!.cleanup()
-        locationManager!!.unregisterLocationManager()
-        // Remove ourself from hashmap to prevent memory leaks
+        try {
+            locationManager?.unregisterLocationManager()
+        } catch (e: Exception) {
+            Timber.e(e, "Error while cleaning up locationManager")
+        }
         locationManager = null
         super.onDestroy()
     }

@@ -121,8 +121,21 @@ class ProfileActivity : BaseActivity() {
 
     public override fun onDestroy() {
         super.onDestroy()
+
+        // Clear subscriptions
         compositeDisposable.clear()
+
+        // Optional unbind ViewBinding (only if needed)
+        if (::binding.isInitialized) {
+            // No binding.unbind() in generated view binding; safe skip
+        }
+
+        // Nullify fragment references to avoid memory leaks
+        if (::achievementsFragment.isInitialized) achievementsFragment.setHasOptionsMenu(false)
+        if (::leaderboardFragment.isInitialized) leaderboardFragment.setHasOptionsMenu(false)
+        contributionsFragment = null
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_about, menu)

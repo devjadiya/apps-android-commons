@@ -98,6 +98,11 @@ class CommonsApplication : MultiDexApplication() {
         super.onCreate()
 
         instance = this
+
+//        if (BuildConfig.DEBUG) {
+//            leakcanary.AppWatcher.manualInstall(this)
+//        }
+
         init(this)
 
         ApplicationlessInjection

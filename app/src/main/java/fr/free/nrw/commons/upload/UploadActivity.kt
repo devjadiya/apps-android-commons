@@ -879,6 +879,7 @@ class UploadActivity : BaseActivity(), UploadContract.View, UploadBaseFragment.C
             uploadCategoriesFragment!!.callback = null
         }
         onBackPressedCallback.remove()
+        UploadMediaPresenter.presenterCallback = null // Clearing reference
     }
 
     /**

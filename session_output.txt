@@ -1,0 +1,50 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20250526111232
+Username: DEV\devja
+RunAs User: DEV\devja
+Configuration Name: 
+Machine: DEV (Microsoft Windows NT 10.0.26100.0)
+Host Application: powershell.exe -NoExit -ExecutionPolicy Bypass -File C:\Program Files\Android\Android Studio\plugins\terminal\shell-integrations\powershell\powershell-integration.ps1
+Process ID: 14756
+PSVersion: 5.1.26100.4061
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.4061
+BuildVersion: 10.0.26100.4061
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is session_output.txt
+PS C:\Users\devja\Downloads\Documents Projects\original> cls
+PS C:\Users\devja\Downloads\Documents Projects\original> ./gradlew testProdDebugUnitTest --tests "*ContributionsFragmentUnitTests"
+
+ContributionsFragmentUnitTests > testSetNotificationCount FAILED
+    java.lang.IllegalStateException at ShadowLegacySQLiteConnection.java:418
+
+ContributionsFragmentUnitTests > testOnResumeCaseNullReady FAILED
+    java.lang.IllegalStateException at ShadowLegacySQLiteConnection.java:418
+
+26 tests completed, 25 failed
+
+> Task :app:testProdDebugUnitTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testProdDebugUnitTest'.
+> There were failing tests. See the report at: file:///C:/Users/devja/Downloads/Documents%20Projects/original/app/build/reports/tests/testProdDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.9/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 36s
+35 actionable tasks: 2 executed, 33 up-to-date
+PS C:\Users\devja\Downloads\Documents Projects\original> cls

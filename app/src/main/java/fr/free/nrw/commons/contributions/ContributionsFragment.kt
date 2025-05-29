@@ -757,7 +757,8 @@ class ContributionsFragment : CommonsDaggerSupportFragment(), FragmentManager.On
 
     override fun onDestroyView() {
         super.onDestroyView()
-        presenter!!.onDetachView()
+        binding = null // Clear view binding to prevent memory leaks
+        presenter?.onDetachView()
     }
 
     override fun notifyDataSetChanged() {
