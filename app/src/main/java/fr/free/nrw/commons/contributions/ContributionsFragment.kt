@@ -685,14 +685,28 @@ class ContributionsFragment : CommonsDaggerSupportFragment(), FragmentManager.On
     override fun onDestroy() {
         try {
             compositeDisposable.clear()
+
+            // Remove child fragment safely
+            contributionsListFragment?.let {
+                childFragmentManager.beginTransaction()
+                    .remove(it)
+                    .commitAllowingStateLoss()
+            }
+
+            // Remove listener and unregister location manager
             childFragmentManager.removeOnBackStackChangedListener(this)
-            locationManager!!.unregisterLocationManager()
-            locationManager!!.removeLocationListener(this)
-            super.onDestroy()
+            locationManager?.unregisterLocationManager()
+            locationManager?.removeLocationListener(this)
+
+            // Nullify locationManager to prevent leaks
+            locationManager = null
+
         } catch (exception: IllegalArgumentException) {
             Timber.e(exception)
         } catch (exception: IllegalStateException) {
             Timber.e(exception)
+        } finally {
+            super.onDestroy()
         }
     }
 
@@ -757,8 +771,9 @@ class ContributionsFragment : CommonsDaggerSupportFragment(), FragmentManager.On
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null // Clear view binding to prevent memory leaks
         presenter?.onDetachView()
+        binding = null
+        contributionsListFragment = null
     }
 
     override fun notifyDataSetChanged() {
